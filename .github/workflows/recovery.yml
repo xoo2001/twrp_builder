@@ -11,7 +11,7 @@ on:
 #  schedule:
 #    - cron: 0 8 * * 5
   watch:
-    types: [started]
+    types: [started] 
 
 env:
   MANIFEST: repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
