@@ -14,11 +14,11 @@ on:
     types: [started]
 
 env:
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-11
-  DEVICE: hot10
-  DT_LINK: https://github.com/xoo2001/android_twrp_infinix_hot10.git -b twrp
-  DT_PATH: device/infinix/hot10
-  TARGET: recoveryimage
+  MANIFEST: repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+  DEVICE: X6739
+  DT_LINK: https://github.com/xoo2001/android_twrp_infinix_x6739.git -b twrp-12.1
+  DT_PATH: device/infinix/X6739
+  TARGET: bootimage
   VENDOR: infinix
   TZ: Asia/Jakarta
   
@@ -60,14 +60,14 @@ jobs:
          run: |
               cd work/out/target/product/$DEVICE
               curl -sL https://git.io/file-transfer | sh
-              ./transfer wet recovery.img && ./transfer wet *.zip
+              ./transfer wet boot.img && ./transfer wet *.zip
 
        - uses: actions/upload-artifact@v2
          with:
-          name: recoveryzip
+          name: bootzip
           path: work/out/target/product/*/*.zip
 
        - uses: actions/upload-artifact@v2
          with:
-          name: recoveryimage
+          name: bootimage
           path: work/out/target/product/*/*.img
